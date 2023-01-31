@@ -1,9 +1,9 @@
 <?php
 /*
 	Plugin Name: OptimWP
-	Description: This Plugin Optimize Wordpress Crumbs.
+	Description: This Plugin Optimize WordPress Crumbs.
 	Plugin URI: http://www.ubilisim.com/
-	Version: 1.0.0
+	Version: 1.0
 	Author: UfukArt
 	Author URI: http://www.ubilisim.com
 	Text Domain: optimwp
@@ -61,7 +61,7 @@ function optimwp_delete(): void {
 }
 
 if (is_admin()) {
-	
+
 	// Add Settings Link To Plugins Page
 	add_filter('plugin_action_links', 'optimwp_plugin_action_links', 10, 2);
 
@@ -79,7 +79,7 @@ if (is_admin()) {
 		return $links;
 	}
 
-	// Add Menu To Wordpress
+	// Add Menu To WordPress
 	function optimwp_menu(): void {
 		add_options_page('OptimWP Settings', 'OptimWP', 'manage_options', 'optimwp', 'optimwp_manage' );
 	}
@@ -87,71 +87,71 @@ if (is_admin()) {
 	
 	// Plugin Management Page
 	function optimwp_manage(): void{
-		if( ( isset($_POST["action"]) && $_POST["action"] == "update" ) ){
+		if( isset( $_POST["action"] ) && ( $_POST["action"] == "update" ) ){
 			// Wp_nonce check
-			if (!isset($_POST['optimwp_update']) || ! wp_verify_nonce( $_POST['optimwp_update'], 'optimwp_update' ) ) {
+			if (!isset( $_POST['optimwp_update'] ) || ! wp_verify_nonce( $_POST['optimwp_update'], 'optimwp_update' ) ) {
 				echo __('Sorry, you do not have access to this page!', 'optimwp');
 				exit;
 			}else{
-					$optimwp_disable_comments = sanitize_text_field($_POST['optimwp_disable_comments']);
-					$optimwp_disable_xmlrpc = sanitize_text_field($_POST['optimwp_disable_xmlrpc']);
-					$optimwp_disable_restapi = sanitize_text_field($_POST['optimwp_disable_restapi']);
-					$optimwp_disable_rssfeed = sanitize_text_field($_POST['optimwp_disable_rssfeed']);
-					$optimwp_disable_login_language_switcher = sanitize_text_field($_POST['optimwp_disable_login_language_switcher']);
-					$optimwp_disable_auto_update_core = sanitize_text_field($_POST['optimwp_disable_auto_update_core']);
-					$optimwp_disable_auto_update_plugin = sanitize_text_field($_POST['optimwp_disable_auto_update_plugin']);
-					$optimwp_disable_auto_update_theme = sanitize_text_field($_POST['optimwp_disable_auto_update_theme']);
-					$optimwp_disable_auto_update_translation = sanitize_text_field($_POST['optimwp_disable_auto_update_translation']);
-					$optimwp_disable_auto_core_update_email = sanitize_text_field($_POST['optimwp_disable_auto_core_update_email']);
-					$optimwp_disable_auto_plugin_update_email = sanitize_text_field($_POST['optimwp_disable_auto_plugin_update_email']);
-					$optimwp_disable_auto_theme_update_email = sanitize_text_field($_POST['optimwp_disable_auto_theme_update_email']);
-					$optimwp_remove_css_ver = sanitize_text_field($_POST['optimwp_remove_css_ver']);
-					$optimwp_remove_js_ver = sanitize_text_field($_POST['optimwp_remove_js_ver']);
-					$optimwp_remove_wp_generator = sanitize_text_field($_POST['optimwp_remove_wp_generator']);
-					$optimwp_remove_visualcomposer_generator = sanitize_text_field($_POST['optimwp_remove_visualcomposer_generator']);
-					$optimwp_remove_revslider_generator = sanitize_text_field($_POST['optimwp_remove_revslider_generator']);
-					$optimwp_remove_yoastseo_comments = sanitize_text_field($_POST['optimwp_remove_yoastseo_comments']);
-					$optimwp_remove_wpml_meta = sanitize_text_field($_POST['optimwp_remove_wpml_meta']);
-					$optimwp_remove_wp_dashicons = sanitize_text_field($_POST['optimwp_remove_wp_dashicons']);
-					$optimwp_remove_rsd_link = sanitize_text_field($_POST['optimwp_remove_rsd_link']);
-					$optimwp_remove_shortlink = sanitize_text_field($_POST['optimwp_remove_shortlink']);
-					$optimwp_disable_file_editor = sanitize_text_field($_POST['optimwp_disable_file_editor']);
-					$optimwp_change_login_error = sanitize_text_field($_POST['optimwp_change_login_error']);
-					$optimwp_remove_wlwmanifest_link = sanitize_text_field($_POST['optimwp_remove_wlwmanifest_link']);
-					if(!isset($_POST['optimwp_disable_post_revisions'])){
-						$optimwp_disable_post_revisions =[];
-					}else{
-						$optimwp_disable_post_revisions = sanitize_html_class($_POST['optimwp_disable_post_revisions']);
-					}
-					$optimwp_options = [
-						'optimwp_disable_comments'=> $optimwp_disable_comments,
-						'optimwp_disable_xmlrpc'=> $optimwp_disable_xmlrpc,
-						'optimwp_disable_restapi'=> $optimwp_disable_restapi,
-						'optimwp_disable_rssfeed'=> $optimwp_disable_rssfeed,
-						'optimwp_disable_login_language_switcher'=> $optimwp_disable_login_language_switcher,
-						'optimwp_disable_auto_update_core'=> $optimwp_disable_auto_update_core,
-						'optimwp_disable_auto_update_plugin'=> $optimwp_disable_auto_update_plugin,
-						'optimwp_disable_auto_update_theme'=> $optimwp_disable_auto_update_theme,
-						'optimwp_disable_auto_update_translation'=> $optimwp_disable_auto_update_translation,
-						'optimwp_disable_auto_core_update_email'=> $optimwp_disable_auto_core_update_email,
-						'optimwp_disable_auto_plugin_update_email'=> $optimwp_disable_auto_plugin_update_email,
-						'optimwp_disable_auto_theme_update_email'=> $optimwp_disable_auto_theme_update_email,
-						'optimwp_remove_css_ver'=> $optimwp_remove_css_ver,
-						'optimwp_remove_js_ver'=> $optimwp_remove_js_ver,
-						'optimwp_remove_wp_generator'=> $optimwp_remove_wp_generator,
-						'optimwp_remove_visualcomposer_generator'=> $optimwp_remove_visualcomposer_generator,
-						'optimwp_remove_revslider_generator'=> $optimwp_remove_revslider_generator,
-						'optimwp_remove_yoastseo_comments'=> $optimwp_remove_yoastseo_comments,
-						'optimwp_remove_wpml_meta'=> $optimwp_remove_wpml_meta,
-						'optimwp_remove_wp_dashicons'=> $optimwp_remove_wp_dashicons,
-						'optimwp_remove_rsd_link'=> $optimwp_remove_rsd_link,
-						'optimwp_remove_shortlink'=> $optimwp_remove_shortlink,
-						'optimwp_remove_wlwmanifest_link'=> $optimwp_remove_wlwmanifest_link,
-						'optimwp_disable_file_editor'=> $optimwp_disable_file_editor,
-						'optimwp_change_login_error'=> $optimwp_change_login_error,
-						'optimwp_disable_post_revisions'=> $optimwp_disable_post_revisions
-					];
-					update_option('optimwp_options', $optimwp_options);
+				$optimwp_disable_comments = sanitize_text_field($_POST['optimwp_disable_comments']);
+				$optimwp_disable_xmlrpc = sanitize_text_field($_POST['optimwp_disable_xmlrpc']);
+				$optimwp_disable_restapi = sanitize_text_field($_POST['optimwp_disable_restapi']);
+				$optimwp_disable_rssfeed = sanitize_text_field($_POST['optimwp_disable_rssfeed']);
+				$optimwp_disable_login_language_switcher = sanitize_text_field($_POST['optimwp_disable_login_language_switcher']);
+				$optimwp_disable_auto_update_core = sanitize_text_field($_POST['optimwp_disable_auto_update_core']);
+				$optimwp_disable_auto_update_plugin = sanitize_text_field($_POST['optimwp_disable_auto_update_plugin']);
+				$optimwp_disable_auto_update_theme = sanitize_text_field($_POST['optimwp_disable_auto_update_theme']);
+				$optimwp_disable_auto_update_translation = sanitize_text_field($_POST['optimwp_disable_auto_update_translation']);
+				$optimwp_disable_auto_core_update_email = sanitize_text_field($_POST['optimwp_disable_auto_core_update_email']);
+				$optimwp_disable_auto_plugin_update_email = sanitize_text_field($_POST['optimwp_disable_auto_plugin_update_email']);
+				$optimwp_disable_auto_theme_update_email = sanitize_text_field($_POST['optimwp_disable_auto_theme_update_email']);
+				$optimwp_remove_css_ver = sanitize_text_field($_POST['optimwp_remove_css_ver']);
+				$optimwp_remove_js_ver = sanitize_text_field($_POST['optimwp_remove_js_ver']);
+				$optimwp_remove_wp_generator = sanitize_text_field($_POST['optimwp_remove_wp_generator']);
+				$optimwp_remove_visualcomposer_generator = sanitize_text_field($_POST['optimwp_remove_visualcomposer_generator']);
+				$optimwp_remove_revslider_generator = sanitize_text_field($_POST['optimwp_remove_revslider_generator']);
+				$optimwp_remove_yoastseo_comments = sanitize_text_field($_POST['optimwp_remove_yoastseo_comments']);
+				$optimwp_remove_wpml_meta = sanitize_text_field($_POST['optimwp_remove_wpml_meta']);
+				$optimwp_remove_wp_dashicons = sanitize_text_field($_POST['optimwp_remove_wp_dashicons']);
+				$optimwp_remove_rsd_link = sanitize_text_field($_POST['optimwp_remove_rsd_link']);
+				$optimwp_remove_shortlink = sanitize_text_field($_POST['optimwp_remove_shortlink']);
+				$optimwp_disable_file_editor = sanitize_text_field($_POST['optimwp_disable_file_editor']);
+				$optimwp_change_login_error = sanitize_text_field($_POST['optimwp_change_login_error']);
+				$optimwp_remove_wlwmanifest_link = sanitize_text_field($_POST['optimwp_remove_wlwmanifest_link']);
+				if(!isset($_POST['optimwp_disable_post_revisions'])){
+					$optimwp_disable_post_revisions =[];
+				}else{
+					$optimwp_disable_post_revisions = sanitize_html_class($_POST['optimwp_disable_post_revisions']);
+				}
+				$optimwp_options = [
+					'optimwp_disable_comments'=> $optimwp_disable_comments,
+					'optimwp_disable_xmlrpc'=> $optimwp_disable_xmlrpc,
+					'optimwp_disable_restapi'=> $optimwp_disable_restapi,
+					'optimwp_disable_rssfeed'=> $optimwp_disable_rssfeed,
+					'optimwp_disable_login_language_switcher'=> $optimwp_disable_login_language_switcher,
+					'optimwp_disable_auto_update_core'=> $optimwp_disable_auto_update_core,
+					'optimwp_disable_auto_update_plugin'=> $optimwp_disable_auto_update_plugin,
+					'optimwp_disable_auto_update_theme'=> $optimwp_disable_auto_update_theme,
+					'optimwp_disable_auto_update_translation'=> $optimwp_disable_auto_update_translation,
+					'optimwp_disable_auto_core_update_email'=> $optimwp_disable_auto_core_update_email,
+					'optimwp_disable_auto_plugin_update_email'=> $optimwp_disable_auto_plugin_update_email,
+					'optimwp_disable_auto_theme_update_email'=> $optimwp_disable_auto_theme_update_email,
+					'optimwp_remove_css_ver'=> $optimwp_remove_css_ver,
+					'optimwp_remove_js_ver'=> $optimwp_remove_js_ver,
+					'optimwp_remove_wp_generator'=> $optimwp_remove_wp_generator,
+					'optimwp_remove_visualcomposer_generator'=> $optimwp_remove_visualcomposer_generator,
+					'optimwp_remove_revslider_generator'=> $optimwp_remove_revslider_generator,
+					'optimwp_remove_yoastseo_comments'=> $optimwp_remove_yoastseo_comments,
+					'optimwp_remove_wpml_meta'=> $optimwp_remove_wpml_meta,
+					'optimwp_remove_wp_dashicons'=> $optimwp_remove_wp_dashicons,
+					'optimwp_remove_rsd_link'=> $optimwp_remove_rsd_link,
+					'optimwp_remove_shortlink'=> $optimwp_remove_shortlink,
+					'optimwp_remove_wlwmanifest_link'=> $optimwp_remove_wlwmanifest_link,
+					'optimwp_disable_file_editor'=> $optimwp_disable_file_editor,
+					'optimwp_change_login_error'=> $optimwp_change_login_error,
+					'optimwp_disable_post_revisions'=> $optimwp_disable_post_revisions
+				];
+				update_option('optimwp_options', $optimwp_options);
 				$message = '<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"><p><strong>'.__('Settings saved.', 'optimwp').'</strong></p></div>';
 			}
 		}
@@ -168,7 +168,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_comments" id="optimwp_disable_comments" value="0">
-				<input type="checkbox" name="optimwp_disable_comments" id="optimwp_disable_comments" value="1" <?php if($my_options['optimwp_disable_comments'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_comments" id="optimwp_disable_comments" value="1" <?php if($my_options['optimwp_disable_comments']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Completely Disable WP Comment System. Remove comments metabox from dashboard, Disable support for comments and trackbacks, Close comments on the front-end, Hide existing comments, Remove comments page in menu and Remove comments links from admin bar.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -178,7 +178,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_xmlrpc" id="optimwp_disable_xmlrpc" value="0">
-				<input type="checkbox" name="optimwp_disable_xmlrpc" id="optimwp_disable_xmlrpc" value="1" <?php if($my_options['optimwp_disable_xmlrpc'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_xmlrpc" id="optimwp_disable_xmlrpc" value="1" <?php if($my_options['optimwp_disable_xmlrpc']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('XML-RPC is a core WordPress API that allows users to connect to their WordPress website using third-party apps, tools, and services. If you want to access and publish your blog remotely, then you need XML-RPC enabled.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -188,7 +188,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_restapi" id="optimwp_disable_restapi" value="0">
-				<input type="checkbox" name="optimwp_disable_restapi" id="optimwp_disable_restapi" value="1" <?php if($my_options['optimwp_disable_restapi'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_restapi" id="optimwp_disable_restapi" value="1" <?php if($my_options['optimwp_disable_restapi']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('The WordPress REST API provides an interface for applications to interact with your WordPress site by sending and receiving data as JSON (JavaScript Object Notation) objects. Keeping REST API enabled for all users is useless. It’s better to block REST API for unwanted users. This will keep REST API only for Admin.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -198,7 +198,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_rssfeed" id="optimwp_disable_rssfeed" value="0">
-				<input type="checkbox" name="optimwp_disable_rssfeed" id="optimwp_disable_rssfeed" value="1" <?php if($my_options['optimwp_disable_rssfeed'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_rssfeed" id="optimwp_disable_rssfeed" value="1" <?php if($my_options['optimwp_disable_rssfeed']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Turn off the WordPress RSS Feeds for your website with 1 click. Display a custom message instead of the RSS Feeds.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -208,7 +208,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_login_language_switcher" id="optimwp_disable_login_language_switcher" value="0">
-				<input type="checkbox" name="optimwp_disable_login_language_switcher" id="optimwp_disable_login_language_switcher" value="1" <?php if($my_options['optimwp_disable_login_language_switcher'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_login_language_switcher" id="optimwp_disable_login_language_switcher" value="1" <?php if($my_options['optimwp_disable_login_language_switcher']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Hide the Language Switcher on the default WordPress login screen.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -218,7 +218,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_auto_update_core" id="optimwp_disable_auto_update_core" value="0">
-				<input type="checkbox" name="optimwp_disable_auto_update_core" id="optimwp_disable_auto_update_core" value="1" <?php if($my_options['optimwp_disable_auto_update_core'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_auto_update_core" id="optimwp_disable_auto_update_core" value="1" <?php if($my_options['optimwp_disable_auto_update_core']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Disables Auto-Update Feature For WP Core.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -228,7 +228,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_auto_update_plugin" id="optimwp_disable_auto_update_plugin" value="0">
-				<input type="checkbox" name="optimwp_disable_auto_update_plugin" id="optimwp_disable_auto_update_plugin" value="1" <?php if($my_options['optimwp_disable_auto_update_plugin'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_auto_update_plugin" id="optimwp_disable_auto_update_plugin" value="1" <?php if($my_options['optimwp_disable_auto_update_plugin']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Disables Auto-Update Feature For Plugins.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -238,7 +238,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_auto_update_theme" id="optimwp_disable_auto_update_theme" value="0">
-				<input type="checkbox" name="optimwp_disable_auto_update_theme" id="optimwp_disable_auto_update_theme" value="1" <?php if($my_options['optimwp_disable_auto_update_theme'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_auto_update_theme" id="optimwp_disable_auto_update_theme" value="1" <?php if($my_options['optimwp_disable_auto_update_theme']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Disables Auto-Update Feature For Themes.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -248,7 +248,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_auto_update_translation" id="optimwp_disable_auto_update_translation" value="0">
-				<input type="checkbox" name="optimwp_disable_auto_update_translation" id="optimwp_disable_auto_update_translation" value="1" <?php if($my_options['optimwp_disable_auto_update_translation'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_auto_update_translation" id="optimwp_disable_auto_update_translation" value="1" <?php if($my_options['optimwp_disable_auto_update_translation']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Disables Auto-Update Feature For Translations.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -258,7 +258,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_auto_core_update_email" id="optimwp_disable_auto_core_update_email" value="0">
-				<input type="checkbox" name="optimwp_disable_auto_core_update_email" id="optimwp_disable_auto_core_update_email" value="1" <?php if($my_options['optimwp_disable_auto_core_update_email'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_auto_core_update_email" id="optimwp_disable_auto_core_update_email" value="1" <?php if($my_options['optimwp_disable_auto_core_update_email']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('WordPress, email notifications will be sent after each attempt to auto-update. You can disable email notifications for WP core auto-updates', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -268,7 +268,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_auto_plugin_update_email" id="optimwp_disable_auto_plugin_update_email" value="0">
-				<input type="checkbox" name="optimwp_disable_auto_plugin_update_email" id="optimwp_disable_auto_plugin_update_email" value="1" <?php if($my_options['optimwp_disable_auto_plugin_update_email'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_auto_plugin_update_email" id="optimwp_disable_auto_plugin_update_email" value="1" <?php if($my_options['optimwp_disable_auto_plugin_update_email']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('WordPress, email notifications will be sent after each attempt to auto-update a plugin. You can disable email notifications for plugins auto-updates', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -278,7 +278,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_auto_theme_update_email" id="optimwp_disable_auto_theme_update_email" value="0">
-				<input type="checkbox" name="optimwp_disable_auto_theme_update_email" id="optimwp_disable_auto_theme_update_email" value="1" <?php if($my_options['optimwp_disable_auto_theme_update_email'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_auto_theme_update_email" id="optimwp_disable_auto_theme_update_email" value="1" <?php if($my_options['optimwp_disable_auto_theme_update_email']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('WordPress, email notifications will be sent after each attempt to auto-update a theme. You can disable email notifications for themes auto-updates', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -288,7 +288,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_css_ver" id="optimwp_remove_css_ver" value="0">
-				<input type="checkbox" name="optimwp_remove_css_ver" id="optimwp_remove_css_ver" value="1" <?php if($my_options['optimwp_remove_css_ver'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_css_ver" id="optimwp_remove_css_ver" value="1" <?php if($my_options['optimwp_remove_css_ver']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('WordPress appends a version number to css files with query string. Having query string with the URL browser does not cache the file because the file is treated as dynamic file.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -298,7 +298,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_js_ver" id="optimwp_remove_js_ver" value="0">
-				<input type="checkbox" name="optimwp_remove_js_ver" id="optimwp_remove_js_ver" value="1" <?php if($my_options['optimwp_remove_js_ver'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_js_ver" id="optimwp_remove_js_ver" value="1" <?php if($my_options['optimwp_remove_js_ver']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('WordPress appends a version number to js files with query string. Having query string with the URL browser does not cache the file because the file is treated as dynamic file.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -308,7 +308,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_wp_generator" id="optimwp_remove_wp_generator" value="0">
-				<input type="checkbox" name="optimwp_remove_wp_generator" id="optimwp_remove_wp_generator" value="1" <?php if($my_options['optimwp_remove_wp_generator'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_wp_generator" id="optimwp_remove_wp_generator" value="1" <?php if($my_options['optimwp_remove_wp_generator']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Wordpress adds a generator tag to meta tags. You can disable it.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -318,7 +318,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_visualcomposer_generator" id="optimwp_remove_visualcomposer_generator" value="0">
-				<input type="checkbox" name="optimwp_remove_visualcomposer_generator" id="optimwp_remove_visualcomposer_generator" value="1" <?php if($my_options['optimwp_remove_visualcomposer_generator'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_visualcomposer_generator" id="optimwp_remove_visualcomposer_generator" value="1" <?php if($my_options['optimwp_remove_visualcomposer_generator']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Remove Visual Composer Generator Meta Tag in WordPress Head', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -328,7 +328,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_revslider_generator" id="optimwp_remove_revslider_generator" value="0">
-				<input type="checkbox" name="optimwp_remove_revslider_generator" id="optimwp_remove_revslider_generator" value="1" <?php if($my_options['optimwp_remove_revslider_generator'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_revslider_generator" id="optimwp_remove_revslider_generator" value="1" <?php if($my_options['optimwp_remove_revslider_generator']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Remove Revolution Slider Generator Meta Tag in WordPress Head', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -338,7 +338,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_yoastseo_comments" id="optimwp_remove_yoastseo_comments" value="0">
-				<input type="checkbox" name="optimwp_remove_yoastseo_comments" id="optimwp_remove_yoastseo_comments" value="1" <?php if($my_options['optimwp_remove_yoastseo_comments'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_yoastseo_comments" id="optimwp_remove_yoastseo_comments" value="1" <?php if($my_options['optimwp_remove_yoastseo_comments']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Remove All Yoast HTML Comments From Page source. Though HTML comments are not visible but these are a part of DOM tree and increase the number of DOM elements. Too many HTML comments can increase the overall size of any page. Keeping a few HTML comments may not affect your page speed. But if you have too many HTML comments, then definitely it will decrease your webpage speed.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -348,7 +348,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_wpml_meta" id="optimwp_remove_wpml_meta" value="0">
-				<input type="checkbox" name="optimwp_remove_wpml_meta" id="optimwp_remove_wpml_meta" value="1" <?php if($my_options['optimwp_remove_wpml_meta'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_wpml_meta" id="optimwp_remove_wpml_meta" value="1" <?php if($my_options['optimwp_remove_wpml_meta']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Remove WPML Generator Meta From WordPress Head', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -358,7 +358,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_wp_dashicons" id="optimwp_remove_wp_dashicons" value="0">
-				<input type="checkbox" name="optimwp_remove_wp_dashicons" id="optimwp_remove_wp_dashicons" value="1" <?php if($my_options['optimwp_remove_wp_dashicons'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_wp_dashicons" id="optimwp_remove_wp_dashicons" value="1" <?php if($my_options['optimwp_remove_wp_dashicons']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Dashicons is the official WordPress icon since WordPress 3.8. The dashicons.min.css script loads in front end, which seems unnecessary to some users. It only needs on the backend for dashboard icons. If you are not using any Dashicons on your page or post. Then you can disable the script from loading. It can enhance a little performance.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -368,7 +368,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_rsd_link" id="optimwp_remove_rsd_link" value="0">
-				<input type="checkbox" name="optimwp_remove_rsd_link" id="optimwp_remove_rsd_link" value="1" <?php if($my_options['optimwp_remove_rsd_link'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_rsd_link" id="optimwp_remove_rsd_link" value="1" <?php if($my_options['optimwp_remove_rsd_link']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('By default, Wordpress adds a link tag is for used by blog clients in every WordPress install. If you edit your site from your browser then you don’t need this. You can disable it.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -378,7 +378,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_shortlink" id="optimwp_remove_shortlink" value="0">
-				<input type="checkbox" name="optimwp_remove_shortlink" id="optimwp_remove_shortlink" value="1" <?php if($my_options['optimwp_remove_shortlink'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_shortlink" id="optimwp_remove_shortlink" value="1" <?php if($my_options['optimwp_remove_shortlink']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('By default, Wordpress adds a link like https://example.com/?p=ID to head. You can disable it.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -388,7 +388,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_remove_wlwmanifest_link" id="optimwp_remove_wlwmanifest_link" value="0">
-				<input type="checkbox" name="optimwp_remove_wlwmanifest_link" id="optimwp_remove_wlwmanifest_link" value="1" <?php if($my_options['optimwp_remove_wlwmanifest_link'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_remove_wlwmanifest_link" id="optimwp_remove_wlwmanifest_link" value="1" <?php if($my_options['optimwp_remove_wlwmanifest_link']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('wlwmanifest.xml is a static file with information on how Windows Live Writer can talk to WordPress. It has nothing to do with security or performance. If you just love to keep your head area net and clean then you can remove it.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -398,7 +398,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_disable_file_editor" id="optimwp_disable_file_editor" value="0">
-				<input type="checkbox" name="optimwp_disable_file_editor" id="optimwp_disable_file_editor" value="1" <?php if($my_options['optimwp_disable_file_editor'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_disable_file_editor" id="optimwp_disable_file_editor" value="1" <?php if($my_options['optimwp_disable_file_editor']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('WordPress allows you to edit your plugin and theme files directly through its admin panel. Although, this is dangerous because a single typo can render your website blank.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -408,7 +408,7 @@ $my_options = get_option('optimwp_options');
 			</th>
 			<td>
 				<input type="hidden" name="optimwp_change_login_error" id="optimwp_change_login_error" value="0">
-				<input type="checkbox" name="optimwp_change_login_error" id="optimwp_change_login_error" value="1" <?php if($my_options['optimwp_change_login_error'] == 1){echo esc_html("checked");}?>>
+				<input type="checkbox" name="optimwp_change_login_error" id="optimwp_change_login_error" value="1" <?php if($my_options['optimwp_change_login_error']){echo esc_html("checked");}?>>
 				<p class="description"><?php echo __('Change Login Error Message in WordPress to "The username or password is incorrect.". Improve safety by hiding the specific login error information.', 'optimwp');?></p>
 			</td>
 		</tr>
@@ -444,7 +444,7 @@ $my_options = get_option('optimwp_options');
 if(is_array($my_options)) {
 
 	// Disable Comments
-	if($my_options['optimwp_disable_comments'] == 1){
+	if($my_options['optimwp_disable_comments']){
 		add_action('admin_init', function () {
 			// Redirect any user trying to access comments page
 			global $pagenow;
@@ -487,7 +487,7 @@ if(is_array($my_options)) {
 	}
 
 	// Disable XML-RPC
-	if($my_options['optimwp_disable_xmlrpc'] == 1){
+	if($my_options['optimwp_disable_xmlrpc']){
 		add_filter( 'xmlrpc_enabled', '__return_false' );
 		add_filter( 'xmlrpc_methods', 'optimwp_remove_xmlrpc_methods' );
 	}
@@ -496,7 +496,7 @@ if(is_array($my_options)) {
 	}
 
 	// Disable REST API
-	if($my_options['optimwp_disable_restapi'] == 1){
+	if($my_options['optimwp_disable_restapi']){
 		add_filter('json_enabled', '__return_false');
 		add_filter('json_jsonp_enabled', '__return_false');
 		add_filter('rest_jsonp_enabled', '__return_false');
@@ -505,7 +505,7 @@ if(is_array($my_options)) {
 	}
 
 	// Disable RSS FEED
-	if($my_options['optimwp_disable_rssfeed'] == 1){
+	if($my_options['optimwp_disable_rssfeed']){
 		// Replace all feeds with the message above.
 		add_action( 'do_feed_rdf', 'optimwp_wpcode_snippet_disable_feed', 1 );
 		add_action( 'do_feed_rss', 'optimwp_wpcode_snippet_disable_feed', 1 );
@@ -529,56 +529,56 @@ if(is_array($my_options)) {
 	}
 
 	// Disable Login Screen Language Switcher
-	if($my_options['optimwp_disable_login_language_switcher'] == 1){
+	if($my_options['optimwp_disable_login_language_switcher']){
 		add_filter( 'login_display_language_dropdown', '__return_false' );
 	}
 
 	// Disable auto-update for WP Core.
-	if($my_options['optimwp_disable_auto_update_core'] == 1){
+	if($my_options['optimwp_disable_auto_update_core']){
 		add_filter( 'automatic_updater_disabled', '__return_true' );
 		add_filter( 'auto_update_core', '__return_false' );
 	}
 
 	// Disable auto-update for plugins.
-	if($my_options['optimwp_disable_auto_update_plugin'] == 1){
+	if($my_options['optimwp_disable_auto_update_plugin']){
 		add_filter( 'automatic_updater_disabled', '__return_true' );
 		add_filter( 'auto_update_plugin', '__return_false' );
 	}
 
 	// Disable auto-update for themes.
-	if($my_options['optimwp_disable_auto_update_theme'] == 1){
+	if($my_options['optimwp_disable_auto_update_theme']){
 		add_filter( 'automatic_updater_disabled', '__return_true' );
 		add_filter( 'auto_update_theme', '__return_false' );
 	}
 
 	// Disable auto-update for translations.
-	if($my_options['optimwp_disable_auto_update_translation'] == 1){
+	if($my_options['optimwp_disable_auto_update_translation']){
 		add_filter( 'automatic_updater_disabled', '__return_true' );
 		add_filter( 'auto_update_translation', '__return_false' );
 	}
 
 	// Disable plugins auto-update email notifications.
-	if($my_options['optimwp_disable_auto_plugin_update_email'] == 1){
+	if($my_options['optimwp_disable_auto_plugin_update_email']){
 		add_filter( 'auto_plugin_update_send_email', '__return_false' );
 	}
 
 	// Disable WP Core auto-update email notifications.
-	if($my_options['optimwp_disable_auto_core_update_email'] == 1){
+	if($my_options['optimwp_disable_auto_core_update_email']){
 		add_filter( 'auto_core_update_send_email', '__return_false' );
 	}
 
 	// Disable themes auto-update email notifications.
-	if($my_options['optimwp_disable_auto_theme_update_email'] == 1){
+	if($my_options['optimwp_disable_auto_theme_update_email']){
 		add_filter( 'auto_theme_update_send_email', '__return_false' );
 	}
 
 	// Remove query string from CSS files
-	if($my_options['optimwp_remove_css_ver'] == 1){
+	if($my_options['optimwp_remove_css_ver']){
 		add_filter('style_loader_src', 'optimwp_remove_cssjs_ver',10,2);
 	}
 
 	// Remove query string from JS files
-	if($my_options['optimwp_remove_js_ver'] == 1){
+	if($my_options['optimwp_remove_js_ver']){
 		add_filter('script_loader_src', 'optimwp_remove_cssjs_ver',10,2);
 	}
 
@@ -590,7 +590,7 @@ if(is_array($my_options)) {
 	}
 
 	// Remove Wp Generator Tag
-	if($my_options['optimwp_remove_wp_generator'] == 1){
+	if($my_options['optimwp_remove_wp_generator']){
 		add_filter('the_generator', '__return_empty_string');
 	}
 
@@ -614,28 +614,28 @@ if(is_array($my_options)) {
 	// Remove Visual Composer Generator Tag
 	$installed = optimwp_check_plugin_installed( "js_composer/js_composer.php" );
 	$active    = optimwp_check_plugin_active( "js_composer/js_composer.php" );
-	if ( $installed && $active && $my_options['optimwp_remove_visualcomposer_generator'] == 1) {
+	if ( $installed && $active && $my_options['optimwp_remove_visualcomposer_generator']) {
 		add_filter( 'vcv:api:output:meta', '__return_null' );
 	}
 
 	// Remove Revolution Slider Generator Tag
 	$installed = optimwp_check_plugin_installed( "revslider/revslider.php" );
 	$active    = optimwp_check_plugin_active( "revslider/revslider.php" );
-	if ( $installed && $active && $my_options['optimwp_remove_revslider_generator'] == 1) {
+	if ( $installed && $active && $my_options['optimwp_remove_revslider_generator']) {
 		add_filter('revslider_meta_generator', '__return_empty_string');
 	}
 
 	// Remove All Yoast HTML Comments From Page source
 	$installed = optimwp_check_plugin_installed( "wordpress-seo/wp-seo.php" );
 	$active    = optimwp_check_plugin_active( "wordpress-seo/wp-seo.php" );
-	if ( $installed && $active && $my_options['optimwp_remove_yoastseo_comments'] == 1) {
+	if ( $installed && $active && $my_options['optimwp_remove_yoastseo_comments']) {
 		add_filter('wpseo_debug_markers', '__return_false');
 	}
 
 	// Remove WPML meta generator tag
 	$installed = optimwp_check_plugin_installed( "sitepress-multilingual-cms/sitepress.php" );
 	$active    = optimwp_check_plugin_active( "sitepress-multilingual-cms/sitepress.php" );
-	if ( $installed && $active && $my_options['optimwp_remove_wpml_meta'] == 1) {
+	if ( $installed && $active && $my_options['optimwp_remove_wpml_meta']) {
 		add_action('wp_head', 'optimwp_remove_wpml_generator', 0);
 	}
 	function optimwp_remove_wpml_generator(): void{
@@ -644,8 +644,8 @@ if(is_array($my_options)) {
 		}
 	}
 
-	// Remove Dashicons from Admin Bar for non logged in users
-	if($my_options['optimwp_remove_wp_dashicons'] == 1){
+	// Remove Dashicons from Admin Bar for non-logged-in users
+	if($my_options['optimwp_remove_wp_dashicons']){
 		add_action('wp_print_styles', 'optimwp_remove_wp_dashicons', 100);
 	}
 	function optimwp_remove_wp_dashicons(): void{
@@ -656,22 +656,22 @@ if(is_array($my_options)) {
 	}	
 
 	// Remove RSD Link
-	if($my_options['optimwp_remove_rsd_link'] == 1){
+	if($my_options['optimwp_remove_rsd_link']){
 		remove_action('wp_head', 'rsd_link');
 	}
 
 	// Remove Short Link
-	if($my_options['optimwp_remove_shortlink'] == 1){
-		remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+	if($my_options['optimwp_remove_shortlink']){
+		remove_action('wp_head', 'wp_shortlink_wp_head');
 	}
 
 	// Remove WLWManifest Link
-	if($my_options['optimwp_remove_wlwmanifest_link'] == 1){
+	if($my_options['optimwp_remove_wlwmanifest_link']){
 		remove_action('wp_head', 'wlwmanifest_link');
 	}
 
 	// Disable Plugin and Theme Files Edit
-	if($my_options['optimwp_disable_file_editor'] == 1){
+	if($my_options['optimwp_disable_file_editor']){
 		add_action('init','optimwp_disable_file_edit_action');
 	}
 	function optimwp_disable_file_edit_action(): void {
@@ -680,7 +680,7 @@ if(is_array($my_options)) {
 	}
 
 	// Change Default Login Error Message
-	if($my_options['optimwp_change_login_error'] == 1){
+	if($my_options['optimwp_change_login_error']){
 		add_filter('login_errors','optimwp_change_login_errors');
 	}
 	function optimwp_change_login_errors(): string {

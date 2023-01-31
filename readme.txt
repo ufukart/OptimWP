@@ -5,7 +5,7 @@ Tags: optimize, optimization, clean
 Requires at least: 5
 Tested up to: 6.1.1
 Requires PHP: 7.1
-Stable tag: 1.0.0
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,10 +13,6 @@ Manage many options for cleaning WordPress crumbs any without any coding knowled
 
 == Description ==
 Manage many options for cleaning WordPress crumbs any without any coding knowledge.
-
-= Caution! =
-This plugin has option to disable wordpress core, plugin, theme and translation updates.
-We do not recommend disabling Wordpress Auto-Update Mechanism for security reasons.
 
 = Features =
 * Disable Comments
@@ -46,6 +42,9 @@ We do not recommend disabling Wordpress Auto-Update Mechanism for security reaso
 * Change Login Error Message
 * Disable Posts Revisions
 
+= Caution! =
+This plugin has option to disable wordpress core, plugin, theme and translation updates.
+We do not recommend disabling Wordpress Auto-Update Mechanism for security reasons.
 
 == Installation ==
 1. Go to Plugins, Add New, Upload Plugin.
