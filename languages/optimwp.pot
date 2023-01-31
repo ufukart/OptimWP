@@ -1,0 +1,324 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: OptimWP\n"
+"POT-Creation-Date: 2023-01-30 11:44+0300\n"
+"PO-Revision-Date: 2023-01-30 11:39+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: optimwp.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: optimwp.php:76
+msgid "Settings"
+msgstr ""
+
+#: optimwp.php:93
+msgid "Sorry, you do not have access to this page!"
+msgstr ""
+
+#: optimwp.php:155
+msgid "Settings saved."
+msgstr ""
+
+#: optimwp.php:167
+msgid "Disable Comments"
+msgstr ""
+
+#: optimwp.php:172
+msgid ""
+"Completely Disable WP Comment System. Remove comments metabox from "
+"dashboard, Disable support for comments and trackbacks, Close comments on "
+"the front-end, Hide existing comments, Remove comments page in menu and "
+"Remove comments links from admin bar."
+msgstr ""
+
+#: optimwp.php:177
+msgid "Disable XML-RPC"
+msgstr ""
+
+#: optimwp.php:182
+msgid ""
+"XML-RPC is a core WordPress API that allows users to connect to their "
+"WordPress website using third-party apps, tools, and services. If you want "
+"to access and publish your blog remotely, then you need XML-RPC enabled."
+msgstr ""
+
+#: optimwp.php:187
+msgid "Disable REST API"
+msgstr ""
+
+#: optimwp.php:192
+msgid ""
+"The WordPress REST API provides an interface for applications to interact "
+"with your WordPress site by sending and receiving data as JSON (JavaScript "
+"Object Notation) objects. Keeping REST API enabled for all users is useless. "
+"It’s better to block REST API for unwanted users. This will keep REST API "
+"only for Admin."
+msgstr ""
+
+#: optimwp.php:197
+msgid "Disable RSS Feeds"
+msgstr ""
+
+#: optimwp.php:202
+msgid ""
+"Turn off the WordPress RSS Feeds for your website with 1 click. Display a "
+"custom message instead of the RSS Feeds."
+msgstr ""
+
+#: optimwp.php:207
+msgid "Disable Login Language Switcher"
+msgstr ""
+
+#: optimwp.php:212
+msgid "Hide the Language Switcher on the default WordPress login screen."
+msgstr ""
+
+#: optimwp.php:217
+msgid "Disable Auto-Update For WP Core"
+msgstr ""
+
+#: optimwp.php:222
+msgid "Disables Auto-Update Feature For WP Core."
+msgstr ""
+
+#: optimwp.php:227
+msgid "Disable Auto-Update For Plugins"
+msgstr ""
+
+#: optimwp.php:232
+msgid "Disables Auto-Update Feature For Plugins."
+msgstr ""
+
+#: optimwp.php:237
+msgid "Disable Auto-Update For Themes"
+msgstr ""
+
+#: optimwp.php:242
+msgid "Disables Auto-Update Feature For Themes."
+msgstr ""
+
+#: optimwp.php:247
+msgid "Disable Auto-Update For Translations"
+msgstr ""
+
+#: optimwp.php:252
+msgid "Disables Auto-Update Feature For Translations."
+msgstr ""
+
+#: optimwp.php:257
+msgid "Disable Auto-Update Email Notifications For WP Core"
+msgstr ""
+
+#: optimwp.php:262
+msgid ""
+"WordPress, email notifications will be sent after each attempt to auto-"
+"update. You can disable email notifications for WP core auto-updates"
+msgstr ""
+
+#: optimwp.php:267
+msgid "Disable Auto-Update Email Notifications For Plugins"
+msgstr ""
+
+#: optimwp.php:272
+msgid ""
+"WordPress, email notifications will be sent after each attempt to auto-"
+"update a plugin. You can disable email notifications for plugins auto-updates"
+msgstr ""
+
+#: optimwp.php:277
+msgid "Disable Auto-Update Email Notifications For Themes"
+msgstr ""
+
+#: optimwp.php:282
+msgid ""
+"WordPress, email notifications will be sent after each attempt to auto-"
+"update a theme. You can disable email notifications for themes auto-updates"
+msgstr ""
+
+#: optimwp.php:287
+msgid "Remove Version from Stylesheets"
+msgstr ""
+
+#: optimwp.php:292
+msgid ""
+"WordPress appends a version number to css files with query string. Having "
+"query string with the URL browser does not cache the file because the file "
+"is treated as dynamic file."
+msgstr ""
+
+#: optimwp.php:297
+msgid "Remove Version from Scripts"
+msgstr ""
+
+#: optimwp.php:302
+msgid ""
+"WordPress appends a version number to js files with query string. Having "
+"query string with the URL browser does not cache the file because the file "
+"is treated as dynamic file."
+msgstr ""
+
+#: optimwp.php:307
+msgid "Remove Generator Tag From Meta"
+msgstr ""
+
+#: optimwp.php:312
+msgid "Wordpress adds a generator tag to meta tags. You can disable it."
+msgstr ""
+
+#: optimwp.php:317
+msgid "Remove Visual Composer Generator Meta Tag"
+msgstr ""
+
+#: optimwp.php:322
+msgid "Remove Visual Composer Generator Meta Tag in WordPress Head"
+msgstr ""
+
+#: optimwp.php:327
+msgid "Remove Revolution Slider Generator Meta Tag"
+msgstr ""
+
+#: optimwp.php:332
+msgid "Remove Revolution Slider Generator Meta Tag in WordPress Head"
+msgstr ""
+
+#: optimwp.php:337
+msgid "Remove Yoast SEO HTML Comments"
+msgstr ""
+
+#: optimwp.php:342
+msgid ""
+"Remove All Yoast HTML Comments From Page source. Though HTML comments are "
+"not visible but these are a part of DOM tree and increase the number of DOM "
+"elements. Too many HTML comments can increase the overall size of any page. "
+"Keeping a few HTML comments may not affect your page speed. But if you have "
+"too many HTML comments, then definitely it will decrease your webpage speed."
+msgstr ""
+
+#: optimwp.php:347
+msgid "Remove WPML Generator Meta"
+msgstr ""
+
+#: optimwp.php:352
+msgid "Remove WPML Generator Meta From WordPress Head"
+msgstr ""
+
+#: optimwp.php:357
+msgid "Remove WordPress Dashicons"
+msgstr ""
+
+#: optimwp.php:362
+msgid ""
+"Dashicons is the official WordPress icon since WordPress 3.8. The dashicons."
+"min.css script loads in front end, which seems unnecessary to some users. It "
+"only needs on the backend for dashboard icons. If you are not using any "
+"Dashicons on your page or post. Then you can disable the script from "
+"loading. It can enhance a little performance."
+msgstr ""
+
+#: optimwp.php:367
+msgid "Remove RSD Link From Meta"
+msgstr ""
+
+#: optimwp.php:372
+msgid ""
+"By default, Wordpress adds a link tag is for used by blog clients in every "
+"WordPress install. If you edit your site from your browser then you don’t "
+"need this. You can disable it."
+msgstr ""
+
+#: optimwp.php:377
+msgid "Remove Short Link From Meta"
+msgstr ""
+
+#: optimwp.php:382
+msgid ""
+"By default, Wordpress adds a link like https://example.com/?p=ID to head. "
+"You can disable it."
+msgstr ""
+
+#: optimwp.php:387
+msgid "Remove WLW Manifest Link From Meta"
+msgstr ""
+
+#: optimwp.php:392
+msgid ""
+"wlwmanifest.xml is a static file with information on how Windows Live Writer "
+"can talk to WordPress. It has nothing to do with security or performance. If "
+"you just love to keep your head area net and clean then you can remove it."
+msgstr ""
+
+#: optimwp.php:397
+msgid "Disable File Editor"
+msgstr ""
+
+#: optimwp.php:402
+msgid ""
+"WordPress allows you to edit your plugin and theme files directly through "
+"its admin panel. Although, this is dangerous because a single typo can "
+"render your website blank."
+msgstr ""
+
+#: optimwp.php:407
+msgid "Change Login Error Message"
+msgstr ""
+
+#: optimwp.php:412
+msgid ""
+"Change Login Error Message in WordPress to \"The username or password is "
+"incorrect.\". Improve safety by hiding the specific login error information."
+msgstr ""
+
+#: optimwp.php:417
+msgid "Disable Posts Revisions"
+msgstr ""
+
+#: optimwp.php:429
+msgid ""
+"The WordPress revisions system stores a record of each saved draft or "
+"published update. Disable post revisions for selected post types to reduce "
+"database and server load. To select multiple post types, hold ctrl key while "
+"selecting. Do not select a post type if you are not sure about it."
+msgstr ""
+
+#: optimwp.php:434
+msgid "Update"
+msgstr ""
+
+#: optimwp.php:524
+#, php-format
+msgid "No feed available, please visit our %1$shomepage%2$s!"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "OptimWP"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.ubilisim.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "This Plugin Optimize WordPress Crumbs."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "UfukArt"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.ubilisim.com"
+msgstr ""
