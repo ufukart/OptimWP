@@ -1,9 +1,9 @@
 === OptimWP ===
 Contributors: UfukArt
-Donate link: https://donate.stripe.com/7sIcQlbaR4rc7qobII
+Donate link: https://www.paypal.com/donate/?business=53EHQKQ3T87J8&no_recurring=0&currency_code=USD
 Tags: optimize, optimization, clean, tweak
-Requires at least: 5
-Tested up to: 6.1.1
+Requires at least: 5.0
+Tested up to: 6.8
 Requires PHP: 7.1
 Stable tag: 1.1
 License: GPLv2 or later
