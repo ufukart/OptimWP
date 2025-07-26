@@ -2,7 +2,7 @@
 Manage many options for cleaning WordPress crumbs any without any coding knowledge.
 
 Contributors: UfukArt
-Donate link: https://donate.stripe.com/7sIcQlbaR4rc7qobII
+[![Donate](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://www.paypal.com/donate/?business=53EHQKQ3T87J8&no_recurring=0&currency_code=USD)
 Tags: optimize, optimization, clean
 Requires at least: 5
 Tested up to: 6.1.1
