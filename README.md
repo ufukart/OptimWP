@@ -1,86 +1,92 @@
-=== OptimWP ===
-Contributors: UfukArt  
-Donate link: https://www.paypal.com/donate/?business=53EHQKQ3T87J8&no_recurring=0&currency_code=USD  
-Tags: optimize, optimization, clean, tweak  
-Requires at least: 5.0  
-Tested up to: 6.8  
-Requires PHP: 7.1  
-Stable tag: 1.1  
-License: GPLv2 or later  
-License URI: http://www.gnu.org/licenses/gpl-2.0.html  
+# OptimWP
 
-Manage and clean up WordPress core leftovers and tweaks — no coding required.
+**Contributors:** UfukArt  
+**Donate link:** [https://www.paypal.com/donate/?business=53EHQKQ3T87J8&no_recurring=0&currency_code=USD](https://www.paypal.com/donate/?business=53EHQKQ3T87J8&no_recurring=0&currency_code=USD)  
+**Tags:** optimize, optimization, clean, tweak  
+**Requires at least:** 5.0  
+**Tested up to:** 6.8  
+**Requires PHP:** 7.1  
+**Stable tag:** 1.1  
+**License:** GPLv2 or later  
+**License URI:** http://www.gnu.org/licenses/gpl-2.0.html  
 
-== Description ==
+---
 
-**OptimWP** is a lightweight tweak tool to optimize WordPress by disabling unnecessary features and removing common “WordPress footprints” — all without touching a single line of code.
+## Description
 
-Whether you want to speed up your site, reduce backend noise, or just have more control, OptimWP gives you dozens of cleanup options in a single, easy-to-use interface.
+OptimWP is a WordPress tweak tool. Manage many options for cleaning WordPress crumbs without any coding knowledge and optimize your WordPress.
 
-== Features ==
+---
+
+## Features
 
 - Disable Comments
 - Disable XML-RPC
 - Disable REST API
 - Disable RSS Feeds
 - Disable Login Language Switcher
-- Disable Auto-Update for:
-  - WordPress Core
-  - Plugins
-  - Themes
-  - Translations
-- Disable Auto-Update Email Notifications for:
-  - Core
-  - Plugins
-  - Themes
-- Remove Version from:
-  - Stylesheets
-  - Scripts
-- Remove Meta Tags:
-  - Generator
-  - Visual Composer
-  - Revolution Slider
-  - Yoast SEO HTML Comments
-  - WPML Generator
-  - RSD Link
-  - Short Link
-  - WLW Manifest
-- Remove WordPress Dashicons (frontend)
-- Disable File Editor (theme/plugin editor)
+- Disable Auto-Update For WP Core
+- Disable Auto-Update For Plugins
+- Disable Auto-Update For Themes
+- Disable Auto-Update For Translations
+- Disable Auto-Update Email Notifications For WP Core
+- Disable Auto-Update Email Notifications For Plugins
+- Disable Auto-Update Email Notifications For Themes
+- Remove Version from Stylesheets
+- Remove Version from Scripts
+- Remove Generator Tag From Meta
+- Remove Visual Composer Generator Meta Tag
+- Remove Revolution Slider Generator Meta Tag
+- Remove Yoast SEO HTML Comments
+- Remove WPML Generator Meta
+- Remove WordPress Dashicons
+- Remove RSD Link From Meta
+- Remove Short Link From Meta
+- Remove WLW Manifest Link From Meta
+- Disable File Editor
 - Change Login Error Message
-- Remove "Powered By" HTTP header
-- Disable Auto Linking of URLs in comments
-- Remove "Capital P Dangit"
-- Disable Post Revisions
+- Remove Powered By HTTP header
+- Disable Auto Linking of URLs
+- Remove Capital P Dangit
+- Disable Posts Revisions
 
-== ⚠️ Caution ==
+---
 
-This plugin includes the ability to disable WordPress core, plugin, theme, and translation auto-updates.  
-**Disabling these updates is not recommended** unless you are managing updates through another process (e.g., CI/CD, managed hosting, etc.), as it may expose your site to security risks.
+## Caution!
 
-== Installation ==
+This plugin has options to disable WordPress core, plugin, theme, and translation updates.  
+We do **not** recommend disabling WordPress Auto-Update Mechanism for security reasons.
 
-1. Go to `Plugins` → `Add New` → `Upload Plugin`.
-2. Upload the `optimwp.zip` file.
-3. Activate the plugin.
-4. Visit `Settings` → `OptimWP` to configure the options.
+---
 
-== Frequently Asked Questions ==
+## Installation
 
-= How can I reset settings to default? =
+1. Go to **Plugins > Add New > Upload Plugin**.
+2. Upload the ZIP file.
+3. Activate the plugin through the **Plugins** screen in WordPress.
+4. Go to the **OptimWP** menu under **Settings** and configure the options to disable or remove some crumbs.
 
-Simply deactivate and reactivate the plugin on the WordPress Plugins page.
+---
 
-== Changelog ==
+## Frequently Asked Questions
 
-= 1.1 =
-- Added: Remove Powered By HTTP header
-- Added: Disable Auto Linking of URLs in comment section
-- Added: Remove Capital P Dangit
-- Major code optimizations
+### How can I reset to default settings?
 
-= 1.0 =
+Deactivate and then activate the plugin on the WordPress Plugins page.
+
+---
+
+## Changelog
+
+### 1.1
+- Added: Remove Powered By HTTP header  
+- Added: Disable Auto Linking of URLs in comment section  
+- Added: Remove Capital P Dangit  
+- Major Code Optimizations
+
+### 1.0
 - Initial release
+
 
 == Support ==
 
